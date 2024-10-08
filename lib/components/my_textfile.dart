@@ -26,7 +26,7 @@ class MyTextfile extends StatelessWidget {
             borderSide:
                 BorderSide(color: Theme.of(context).colorScheme.primary),
           ),
-          fillColor: Theme.of(context).colorScheme.secondary,
+          fillColor: Theme.of(context).colorScheme.primary,
           filled: true,
           hintText: HintText,
           hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),

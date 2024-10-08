@@ -1,13 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Auth/auth_service.dart';
+import 'package:myapp/components/my_buttons.dart';
 import 'package:myapp/components/my_textfile.dart';
 
 class LoginPage extends StatelessWidget {
   // email and password text controller
-  //Controllers allow you to respond to user events, such as typing text, 
+  //Controllers allow you to respond to user events, such as typing text,
   //scrolling through a list, or triggering an animation.
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  LoginPage({super.key});
+  final void Function()? onTap;
+  LoginPage({
+    super.key,
+    required this.onTap,
+  });
+  //implement login meathod
+  void login(BuildContext context) async {
+    final authService = AuthService();
+    //try login
+    try {
+      await authService.signInWithEmailandPassword(
+          _emailController.text, _passwordController.text);
+    }
+    //errors
+    catch (e) {
+      showDialog(context: context, builder: (context) => AlertDialog(
+        title: Text(e.toString()),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +65,25 @@ class LoginPage extends StatelessWidget {
             obscuretext: true,
             controller: _passwordController,
           ),
+          const SizedBox(height: 25),
+          // button
+          MyButton(onTap: () => login, text: "Login"),
+          const SizedBox(height: 25),
+          // registeration button
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("New Here ?"),
+              GestureDetector(
+                onTap: onTap,
+                child: Text(
+                  "Register Now",
+                  style: TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          )
         ]),
       ),
     );
