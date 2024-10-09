@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 class AuthService {
   //instance of auth
@@ -18,5 +17,21 @@ class AuthService {
   }
   //sign up
 
+Future<UserCredential>signUpWithEmailandPassword(String email, String password) async{
+  try{
+    UserCredential userCredintial = await _auth.createUserWithEmailAndPassword(
+      email: email, password: password);
+       return userCredintial;
+  }
+ 
+  
+  on FirebaseAuthException catch(e){
+    throw Exception(e.code);
+  }
+}
+  //sign out
+  Future<void> signOut() async {
+    return await _auth.signOut();
+  }
   //errors
 }

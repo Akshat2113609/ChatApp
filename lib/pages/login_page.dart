@@ -6,10 +6,10 @@ import 'package:myapp/components/my_textfile.dart';
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
 
-  LoginPage({
-    Key? key,
+  const LoginPage({
+    super.key,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -33,17 +33,20 @@ class _LoginPageState extends State<LoginPage> {
         _emailController.text,
         _passwordController.text,
       );
+       ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Login successful!")),
+        );
     } catch (e) {
       if (mounted) {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Error'),
+            title: const Text('Error'),
             content: Text(e.toString()),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           ),
@@ -61,13 +64,13 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.message,
                 size: 45,
                 color: Colors.black,
               ),
               const SizedBox(height: 25),
-              Text(
+              const Text(
                 "HEY THERE, WE MISSED YOU",
                 style: TextStyle(
                   fontSize: 15,
@@ -92,10 +95,10 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("New Here?"),
+                  const Text("New Here?"),
                   GestureDetector(
                     onTap: widget.onTap,
-                    child: Text(
+                    child: const Text(
                       "Register Now",
                       style: TextStyle(
                         color: Colors.blue,

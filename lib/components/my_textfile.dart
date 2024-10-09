@@ -4,7 +4,7 @@ class MyTextfile extends StatelessWidget {
   final String HintText;
   final bool obscuretext;
   final TextEditingController controller;
-  MyTextfile({
+  const MyTextfile({
     super.key,
     required this.HintText,
     required this.obscuretext,

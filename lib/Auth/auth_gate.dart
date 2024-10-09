@@ -4,7 +4,7 @@ import 'package:myapp/Auth/login_or_register.dart';
 import 'package:myapp/pages/home_page.dart';
 
 class AuthGate extends StatelessWidget {
-  AuthGate({super.key});
+  const AuthGate({super.key});
   @override
   Widget build(context) {
     return Scaffold(
