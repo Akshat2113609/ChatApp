@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/Auth/auth_service.dart';
+import 'package:myapp/services/Auth/auth_service.dart';
 import 'package:myapp/pages/login_page.dart';
 import 'package:myapp/pages/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {
-  MyDrawer({super.key});
+  const MyDrawer({super.key});
   void logOut() {
     final auth = AuthService();
     auth.signOut();
@@ -29,26 +29,26 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 20.0),
                 child: ListTile(
-                  title: Text("Home"),
-                  leading: Icon(Icons.home),
+                  title: const Text("Home"),
+                  leading: const Icon(Icons.home),
                   onTap: () {
                     Navigator.pop(context);
                   },
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 20.0),
                 child: ListTile(
-                    title: Text("Settings"),
-                    leading: Icon(Icons.settings),
+                    title: const Text("Settings"),
+                    leading: const Icon(Icons.settings),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SettingsPage(),
+                          builder: (context) => const SettingsPage(),
                         ),
                       );
                     }),
@@ -56,10 +56,10 @@ class MyDrawer extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(left: 20.0, bottom: 20.0),
+            padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
             child: ListTile(
-              title: Text("Logout"),
-              leading: Icon(Icons.logout),
+              title: const Text("Logout"),
+              leading: const Icon(Icons.logout),
               onTap:logOut,
             ),
           ),
