@@ -10,10 +10,10 @@ class RegisterPage extends StatelessWidget {
       TextEditingController();
 
   Future<void> register(BuildContext context) async {
-    final _auth = AuthService();
+    final auth = AuthService();
     if (_passwordController.text == _confirmpasswordController.text) {
       try {
-        await _auth.signUpWithEmailandPassword(
+        await auth.signUpWithEmailandPassword(
           _emailController.text,
           _passwordController.text,
         );
